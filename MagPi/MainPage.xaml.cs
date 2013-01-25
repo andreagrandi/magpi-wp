@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Diagnostics;
 using MagPi.Models;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace MagPi
 {
@@ -44,11 +45,23 @@ namespace MagPi
 
             XElement xmlIssues = XElement.Parse(e.Result);
 
+            foreach (XElement issue in xmlIssues.Descendants("item"))
+            {
+                Match match = Regex.Match(issue.Element("description").Value, @"img src='(.*?)'", RegexOptions.IgnoreCase);
+
+                Debug.WriteLine("Title {0}", issue.Element("title").Value.Split('-')[0]);
+                Debug.WriteLine("Date {0}", issue.Element("title").Value.Split('-')[1]);
+                Debug.WriteLine("Image {0}", match.Groups[1].Value);
+                Debug.WriteLine("Pdf {0}", issue.Element("link").Value);
+            }
+
             lstIssues.ItemsSource = from issue in xmlIssues.Descendants("item")
                                      select new Issue
                                      {
                                          Title = issue.Element("title").Value.Split('-')[0],
-                                         Date = issue.Element("title").Value.Split('-')[1]
+                                         Date = issue.Element("title").Value.Split('-')[1],
+                                         ImageUrl = Regex.Match(issue.Element("description").Value, @"img src='(.*?)'", RegexOptions.IgnoreCase).Groups[1].Value,
+                                         PdfUrl = issue.Element("link").Value,
                                      };
         }
 
@@ -61,10 +74,16 @@ namespace MagPi
 
             XElement xmlNews = XElement.Parse(e.Result);
 
+            foreach (XElement news in xmlNews.Descendants("item"))
+            {
+                Debug.WriteLine("Description {0}", news.Element("description").Value);
+                Debug.WriteLine("Date {0}", String.Format("{0:MM/dd/yyyy}", DateTime.Parse(news.Element("pubDate").Value.Remove(news.Element("pubDate").Value.IndexOf(" +")))));
+            }
+
             lstNews.ItemsSource = from news in xmlNews.Descendants("item")
                                      select new News
                                      {
-                                         Date = news.Element("title").Value,
+                                         Date = String.Format("{0:MM/dd/yyyy}", DateTime.Parse(news.Element("pubDate").Value.Remove(news.Element("pubDate").Value.IndexOf(" +")))),
                                          Content = news.Element("description").Value
                                      };
         }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MagPi.Models
 {
-    class News
+    public class News
     {
         public string Date { get; set; }
         public string Content { get; set; }

@@ -41,7 +41,8 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
                                     <StackPanel Width="311">
-                                        <TextBlock Text="{Binding Date}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                        <TextBlock Text="{Binding Date}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                        <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>

@@ -7,7 +7,8 @@ namespace MagPi.Models
 {
     public class Issue
     {
-        public string ImageSource { get; set; }
+        public string ImageUrl { get; set; }
+        public string PdfUrl { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
     }
