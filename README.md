@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.github.com/astagi/magpi-wp/master/pub/TheMagPi.png" alt="MagPi client for Android."/>
+</p>
+
 MagPi for Windows Phone
 -----------------------
 
