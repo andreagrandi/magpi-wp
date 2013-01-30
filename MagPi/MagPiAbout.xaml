@@ -1,0 +1,28 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MagPi.MagPiAbout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <StackPanel VerticalAlignment="Center" Height="707" Margin="0,93,0,0">
+        <Image Source="MagPiAbout.png" Width="350"></Image>
+        <TextBlock Text="MagPi" HorizontalAlignment="Center" FontWeight="Bold" FontSize="48"></TextBlock>
+        <TextBlock x:Name="versionText" Text="Version 1.0.0" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+        <TextBlock Text="Copyright (c) 2013 - MagPi" HorizontalAlignment="Center" FontSize="16" Height="45" Margin="146,0"></TextBlock>
+        <TextBlock Text="Andrea Grandi - a.grandi@gmail.com" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+        <TextBlock Text="Andrea Stagi - stagi.andrea@gmail.com" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+        <TextBlock Text="This is the official Windows Phone client for MagPi, a magazine for RaspberryPi users." 
+                   HorizontalAlignment="Left" FontSize="16" TextWrapping="Wrap" Height="60" Width="450" Margin="20,30,0,0"></TextBlock>
+        <HyperlinkButton Content="Visit MagPi website" NavigateUri="http://www.themagpi.com" FontWeight="Bold" TargetName="_blank"/>
+    </StackPanel>
+
+</phone:PhoneApplicationPage>

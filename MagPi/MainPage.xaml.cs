@@ -88,6 +88,11 @@ namespace MagPi
             RefreshIssues();
         }
 
+        private void About_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MagPiAbout.xaml", UriKind.Relative));
+        }
+
         private void RefreshIssues()
         {
             WebClient issues = new WebClient();
