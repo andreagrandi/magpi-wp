@@ -23,6 +23,7 @@
 
             <controls:PanoramaItem Header="Issues">
                 <Grid x:Name="ContentPanelIssues" Grid.Row="1" Margin="12,0,12,0">
+                    <ProgressBar Name="prgLoadingIssues" IsIndeterminate="True" HorizontalAlignment="Left" Height="53" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="456"/>
                     <ListBox Margin="0,0,-12,0" Name="lstIssues">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -36,12 +37,12 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <ProgressBar Name="prgLoadingIssues" IsIndeterminate="True" HorizontalAlignment="Left" Height="53" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="456"/>
                 </Grid>
             </controls:PanoramaItem>
  
             <controls:PanoramaItem Header="News">
                 <Grid x:Name="ContentPanelNews" Grid.Row="1" Margin="12,0,12,0">
+                    <ProgressBar Name="prgLoadingNews" IsIndeterminate="True" HorizontalAlignment="Left" Height="53" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="456"/>
                     <ListBox Margin="0,0,-12,0" Name="lstNews">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -54,7 +55,6 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <ProgressBar Name="prgLoadingNews" IsIndeterminate="True" HorizontalAlignment="Left" Height="53" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="456"/>
                 </Grid>
             </controls:PanoramaItem>
             
@@ -63,9 +63,11 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBar.Buttons>
+                <shell:ApplicationBarIconButton Click="RefreshEverything_Click" IconUri="/Images/refresh.png" Text="refresh" />
+            </shell:ApplicationBar.Buttons>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="About" Click="About_Click"/>
-                <shell:ApplicationBarMenuItem Text="Refresh" Click="RefreshIssues_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

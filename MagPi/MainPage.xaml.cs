@@ -27,7 +27,7 @@ namespace MagPi
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            RefreshIssues();
+            Refresh();
         }
 
         void issues_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -82,10 +82,11 @@ namespace MagPi
                                      };
         }
 
-        private void RefreshIssues_Click(object sender, EventArgs e)
+        private void RefreshEverything_Click(object sender, EventArgs e)
         {
             prgLoadingIssues.Visibility = System.Windows.Visibility.Visible;
-            RefreshIssues();
+            prgLoadingNews.Visibility = System.Windows.Visibility.Visible;
+            Refresh();
         }
 
         private void About_Click(object sender, EventArgs e)
@@ -93,7 +94,7 @@ namespace MagPi
             NavigationService.Navigate(new Uri("/MagPiAbout.xaml", UriKind.Relative));
         }
 
-        private void RefreshIssues()
+        private void Refresh()
         {
             WebClient issues = new WebClient();
             issues.DownloadStringCompleted += new DownloadStringCompletedEventHandler(issues_DownloadStringCompleted);
