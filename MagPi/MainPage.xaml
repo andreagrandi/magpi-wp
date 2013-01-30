@@ -17,7 +17,10 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
  
         <controls:Panorama Title="MagPi">
- 
+            <controls:Panorama.Background>
+                <ImageBrush Stretch="Fill" ImageSource="/SplashScreenImage.jpg" Opacity="0.15"/>
+            </controls:Panorama.Background>
+
             <controls:PanoramaItem Header="Issues">
                 <Grid x:Name="ContentPanelIssues" Grid.Row="1" Margin="12,0,12,0">
                     <ListBox Margin="0,0,-12,0" Name="lstIssues">
