@@ -38,6 +38,9 @@ namespace MagPi
             // Phone-specific initialization
             InitializePhoneApplication();
 
+            // Force the use of the dark theme
+            ThemeManager.ToDarkTheme();
+
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
             {
