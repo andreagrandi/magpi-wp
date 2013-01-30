@@ -23,9 +23,12 @@
                     <ListBox Margin="0,0,-12,0" Name="lstIssues">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Margin="0,0,0,17" Width="432" Height="78">
-                                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="{Binding Date}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <StackPanel Orientation="Horizontal" Margin="6,2,0,4" Height="105" Width="432" Opacity="1.0">
+                                    <Image x:Name="issueImage" Source="{Binding ImageUrl}" Width="99" Height="99"></Image>
+                                    <StackPanel VerticalAlignment="Top">
+                                        <TextBlock Name="issueTitle" Text="{Binding Title}" Margin="10,0" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                                        <TextBlock Name="issueDate" TextWrapping="Wrap" Text="{Binding Date}" Margin="10,-2,10,0" />
+                                    </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
