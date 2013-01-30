@@ -27,13 +27,7 @@ namespace MagPi
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            WebClient issues = new WebClient();
-            issues.DownloadStringCompleted += new DownloadStringCompletedEventHandler(issues_DownloadStringCompleted);
-            issues.DownloadStringAsync(new Uri("http://feeds.feedburner.com/theMagPi"));
-
-            WebClient news = new WebClient();
-            news.DownloadStringCompleted += new DownloadStringCompletedEventHandler(news_DownloadStringCompleted);
-            news.DownloadStringAsync(new Uri("http://feeds.feedburner.com/MagPi"));
+            RefreshIssues();
         }
 
         void issues_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -86,6 +80,23 @@ namespace MagPi
                                          Date = String.Format("{0:MM/dd/yyyy}", DateTime.Parse(news.Element("pubDate").Value.Remove(news.Element("pubDate").Value.IndexOf(" +")))),
                                          Content = news.Element("description").Value
                                      };
+        }
+
+        private void RefreshIssues_Click(object sender, EventArgs e)
+        {
+            prgLoadingIssues.Visibility = System.Windows.Visibility.Visible;
+            RefreshIssues();
+        }
+
+        private void RefreshIssues()
+        {
+            WebClient issues = new WebClient();
+            issues.DownloadStringCompleted += new DownloadStringCompletedEventHandler(issues_DownloadStringCompleted);
+            issues.DownloadStringAsync(new Uri("http://feeds.feedburner.com/theMagPi"));
+
+            WebClient news = new WebClient();
+            news.DownloadStringCompleted += new DownloadStringCompletedEventHandler(news_DownloadStringCompleted);
+            news.DownloadStringAsync(new Uri("http://feeds.feedburner.com/MagPi"));
         }
     }
 }
