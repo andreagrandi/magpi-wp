@@ -15,6 +15,7 @@ using System.Diagnostics;
 using MagPi.Models;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.Phone.Shell;
 
 namespace MagPi
 {
@@ -103,6 +104,26 @@ namespace MagPi
             WebClient news = new WebClient();
             news.DownloadStringCompleted += new DownloadStringCompletedEventHandler(news_DownloadStringCompleted);
             news.DownloadStringAsync(new Uri("http://feeds.feedburner.com/MagPi"));
+        }
+
+        private void OpenIssue(object sender, GestureEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            Issue issue = (Issue)listBox.SelectedItem;
+
+            if (issue != null)
+            {
+                if(!string.IsNullOrEmpty(issue.Title))
+                    PhoneApplicationService.Current.State["Title"] = issue.Title;
+                if (!string.IsNullOrEmpty(issue.Title))
+                    PhoneApplicationService.Current.State["Date"] = issue.Date;
+                if (!string.IsNullOrEmpty(issue.Title))
+                    PhoneApplicationService.Current.State["ImageUrl"] = issue.ImageUrl;
+                if (!string.IsNullOrEmpty(issue.Title))
+                    PhoneApplicationService.Current.State["PdfUrl"] = issue.PdfUrl;
+
+                NavigationService.Navigate(new Uri("/MagPiIssue.xaml", UriKind.Relative));
+            }
         }
     }
 }
