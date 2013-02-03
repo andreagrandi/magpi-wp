@@ -40,5 +40,15 @@ namespace MagPi
             if (!string.IsNullOrEmpty(image))
                 issueImage.Source = new BitmapImage(new Uri(image, UriKind.RelativeOrAbsolute)); ;
         }
+
+        private void View_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Share_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

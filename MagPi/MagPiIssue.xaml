@@ -17,5 +17,12 @@
         <Image x:Name="issueImage" Height="630" Margin="10,0"/>
     </StackPanel>
 
-
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBar.Buttons>
+                <shell:ApplicationBarIconButton Click="View_Click" IconUri="/Images/view.png" Text="view" />
+                <shell:ApplicationBarIconButton Click="Share_Click" IconUri="/Images/share.png" Text="share" />
+            </shell:ApplicationBar.Buttons>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>
